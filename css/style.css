@@ -1,8 +1,3 @@
-/* ═══════════════════════════════════════════════
-   mercedez.photo — Luka Matić Portfolio
-   Paleta: crna + neon zelena (#39FF14)
-═══════════════════════════════════════════════ */
-
 :root {
   --neon:       #39FF14;
   --neon-dim:   rgba(57,255,20,0.15);
@@ -18,7 +13,6 @@
   --transition: 0.25s cubic-bezier(0.4,0,0.2,1);
 }
 
-/* ── RESET ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
@@ -37,13 +31,9 @@ img { display: block; max-width: 100%; height: auto; }
 a   { color: inherit; text-decoration: none; }
 ul  { list-style: none; }
 
-/* ── UTILITIES ── */
 .neon  { color: var(--neon); }
 .glow  { text-shadow: var(--neon-glow); }
 
-/* ─────────────────────────────────────────────
-   NAV
-───────────────────────────────────────────── */
 .nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -97,7 +87,6 @@ ul  { list-style: none; }
 .nav-links a:hover { color: var(--neon); }
 .nav-links a:hover::after { width: 100%; }
 
-/* burger (mobile) */
 .nav-burger {
   display: none;
   flex-direction: column;
@@ -119,9 +108,6 @@ ul  { list-style: none; }
 .nav-burger.open span:nth-child(2) { opacity: 0; }
 .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* ─────────────────────────────────────────────
-   HERO
-───────────────────────────────────────────── */
 .hero {
   min-height: 100svh;
   display: flex;
@@ -131,7 +117,6 @@ ul  { list-style: none; }
   overflow: hidden;
 }
 
-/* subtle grid background */
 .hero::before {
   content: '';
   position: absolute;
@@ -145,7 +130,6 @@ ul  { list-style: none; }
   pointer-events: none;
 }
 
-/* neon corner accent */
 .hero::after {
   content: '';
   position: absolute;
@@ -219,9 +203,6 @@ ul  { list-style: none; }
   box-shadow: 0 0 10px var(--neon);
 }
 
-/* ─────────────────────────────────────────────
-   SECTION HEADER
-───────────────────────────────────────────── */
 .section-header {
   display: flex;
   align-items: center;
@@ -245,15 +226,11 @@ ul  { list-style: none; }
   background: linear-gradient(to right, var(--neon), transparent);
 }
 
-/* ─────────────────────────────────────────────
-   GALLERY
-───────────────────────────────────────────── */
 .gallery-section {
   padding: 6rem clamp(1rem, 5vw, 3rem);
   background: var(--bg);
 }
 
-/* Masonry via CSS columns */
 .gallery-grid {
   columns: 3;
   column-gap: 12px;
@@ -290,7 +267,6 @@ ul  { list-style: none; }
   filter: brightness(1);
 }
 
-/* Hover overlay */
 .photo-overlay {
   position: absolute;
   bottom: 0; left: 0; right: 0;
@@ -321,9 +297,6 @@ ul  { list-style: none; }
   letter-spacing: 0.05em;
 }
 
-/* ─────────────────────────────────────────────
-   CONTACT
-───────────────────────────────────────────── */
 .contact-section {
   padding: 6rem clamp(1.5rem, 8vw, 8rem);
   background: var(--bg-2);
@@ -373,9 +346,6 @@ ul  { list-style: none; }
 .contact-link svg { color: var(--neon); flex-shrink: 0; }
 .contact-link:hover { color: var(--neon); gap: 1rem; }
 
-/* ─────────────────────────────────────────────
-   FOOTER
-───────────────────────────────────────────── */
 .footer {
   display: flex;
   justify-content: center;
@@ -389,9 +359,6 @@ ul  { list-style: none; }
   background: var(--bg);
 }
 
-/* ─────────────────────────────────────────────
-   LIGHTBOX
-───────────────────────────────────────────── */
 .lightbox-backdrop {
   position: fixed;
   inset: 0;
@@ -453,7 +420,6 @@ ul  { list-style: none; }
 .lb-camera { color: var(--neon); }
 .lb-date   { color: var(--muted); }
 
-/* lightbox buttons */
 .lb-close, .lb-prev, .lb-next {
   position: fixed;
   background: rgba(8,8,8,0.7);
@@ -485,9 +451,6 @@ ul  { list-style: none; }
 .lb-prev { left:  1rem; }
 .lb-next { right: 1rem; }
 
-/* ─────────────────────────────────────────────
-   RESPONSIVE NAV MOBILE
-───────────────────────────────────────────── */
 @media (max-width: 640px) {
   .nav-links {
     position: fixed;
@@ -508,7 +471,6 @@ ul  { list-style: none; }
   .nav-burger { display: flex; }
 }
 
-/* ── scroll reveal ── */
 .photo-item {
   animation: fadeUp 0.5s ease both;
 }

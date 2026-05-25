@@ -1,23 +1,13 @@
-/* ════════════════════════════════════════════
-   mercedez.photo — Gallery JS
-   - Nav scroll effect
-   - Mobile burger menu
-   - Lightbox (click, keyboard, swipe)
-   - Scroll-reveal stagger
-════════════════════════════════════════════ */
-
 (function () {
   'use strict';
 
-  /* ── 1. NAV scroll ── */
   const nav = document.getElementById('nav');
   const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 20);
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* ── 2. Burger menu ── */
-  const burger    = document.getElementById('burger');
-  const navLinks  = document.querySelector('.nav-links');
+  const burger   = document.getElementById('burger');
+  const navLinks = document.querySelector('.nav-links');
 
   burger.addEventListener('click', () => {
     const open = burger.classList.toggle('open');
@@ -33,7 +23,6 @@
     });
   });
 
-  /* ── 3. Photo data ── */
   const items  = Array.from(document.querySelectorAll('.photo-item'));
   const photos = items.map(el => ({
     src:    el.dataset.src,
@@ -42,15 +31,14 @@
     alt:    el.querySelector('img').alt,
   }));
 
-  /* ── 4. Lightbox elements ── */
-  const lb         = document.getElementById('lightbox');
-  const backdrop   = document.getElementById('lbBackdrop');
-  const lbImg      = document.getElementById('lbImg');
-  const lbCamera   = document.getElementById('lbCamera');
-  const lbDate     = document.getElementById('lbDate');
-  const lbClose    = document.getElementById('lbClose');
-  const lbPrev     = document.getElementById('lbPrev');
-  const lbNext     = document.getElementById('lbNext');
+  const lb       = document.getElementById('lightbox');
+  const backdrop = document.getElementById('lbBackdrop');
+  const lbImg    = document.getElementById('lbImg');
+  const lbCamera = document.getElementById('lbCamera');
+  const lbDate   = document.getElementById('lbDate');
+  const lbClose  = document.getElementById('lbClose');
+  const lbPrev   = document.getElementById('lbPrev');
+  const lbNext   = document.getElementById('lbNext');
 
   let current = 0;
   let isOpen  = false;
@@ -92,7 +80,6 @@
     tmp.src = p.src;
   }
 
-  /* ── 5. Click to open ── */
   items.forEach((el, i) => {
     el.addEventListener('click', () => openLightbox(i));
   });
@@ -102,15 +89,13 @@
   lbPrev.addEventListener('click', (e) => { e.stopPropagation(); navigate(-1); });
   lbNext.addEventListener('click', (e) => { e.stopPropagation(); navigate(1); });
 
-  /* ── 6. Keyboard ── */
   document.addEventListener('keydown', (e) => {
     if (!isOpen) return;
-    if (e.key === 'Escape')      closeLightbox();
-    if (e.key === 'ArrowLeft')   navigate(-1);
-    if (e.key === 'ArrowRight')  navigate(1);
+    if (e.key === 'Escape')     closeLightbox();
+    if (e.key === 'ArrowLeft')  navigate(-1);
+    if (e.key === 'ArrowRight') navigate(1);
   });
 
-  /* ── 7. Touch / swipe ── */
   let touchStartX = 0;
   lb.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
   lb.addEventListener('touchend', (e) => {
@@ -118,14 +103,12 @@
     if (Math.abs(dx) > 50) navigate(dx < 0 ? 1 : -1);
   });
 
-  /* ── 8. Scroll-reveal stagger ── */
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const el = entry.target;
-          const delay = (parseInt(el.dataset.index, 10) % 3) * 80;
-          el.style.animationDelay = delay + 'ms';
+          el.style.animationDelay = (parseInt(el.dataset.index, 10) % 3) * 80 + 'ms';
           io.unobserve(el);
         }
       });
